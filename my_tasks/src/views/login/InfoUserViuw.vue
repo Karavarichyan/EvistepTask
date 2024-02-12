@@ -1,8 +1,5 @@
-
-
 <template>
-  
-  <div v-if="userData" class="bg-white overflow-hidden shadow rounded-lg border">
+    <div v-if="userData" class="bg-white overflow-hidden shadow rounded-lg border">
     <div class="px-4 py-1 sm:px-10">
       <h3 class="text-lg leading-6 font-medium text-gray-900">
         User Profile
@@ -135,7 +132,6 @@
       SAVE
     </button>
   </div>
-
   <div v-else>No user data available.</div>
 </template>
 <script setup>

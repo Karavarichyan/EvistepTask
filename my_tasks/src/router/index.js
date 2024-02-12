@@ -27,7 +27,6 @@ const router = createRouter({
             path: "infoPost", // route: /
             component: () => import('@/views/dashboard/PostUserView.vue'),
           },
-        
           {
             path: "intiresting", // route: /
             component: () => import('@/views/dashboard/intrestingInfo.vue'),

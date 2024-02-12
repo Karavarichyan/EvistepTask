@@ -24,17 +24,9 @@ const isValidEmail = computed(() => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return email.value && emailRegex.test(email.value);
 });
-//if (!email.value.length) return;
-// router.push({ path: "/Otp", replace: true });
+
 async function onCreatePost() {
-  ///testttt
-
-  // if (!isValidEmail.value) {
-  //   errorMessage.value = 'Please enter a valid email address';
-  //   return;
-  // }
-
-  ///testtt
+  
   if (isValidEmail.value) {
     try {
       const enteredEmail = email.value;
@@ -47,7 +39,6 @@ async function onCreatePost() {
         const user = response.data[0];
         isSuccess.value = true;
         errorMessage.value = '';
-        // 
         localStorage.setItem('userData', JSON.stringify(user));
         router.push({ path: "/dashboard/Info" });
       } else {
@@ -61,4 +52,5 @@ async function onCreatePost() {
     errorMessage.value = 'Please enter a valid email address';
   }
 }
+
 </script>
