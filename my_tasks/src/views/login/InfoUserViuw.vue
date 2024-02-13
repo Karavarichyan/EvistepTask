@@ -1,6 +1,6 @@
 <template>
     <div v-if="userData" class="bg-white overflow-hidden shadow rounded-lg border">
-    <div class="px-4 py-1 sm:px-10">
+    <div class="px-4 py-1 sm:px-6">
       <h3 class="text-lg leading-6 font-medium text-gray-900">
         User Profile
         <p>{{ userData.name }}</p>
@@ -127,10 +127,11 @@
     </div>
     <button
       @click="saveChanges"
-      class="h-[40px] my-4 rounded-lg min-w-44 bg-blue-900 items-center text-white ml-[160px] font-roboto"
+      class="h-[40px] my-4 rounded-lg min-w-44 bg-blue-900 items-center text-white ml-[280px] font-roboto"
     >
       SAVE
     </button>
+    
   </div>
   <div v-else>No user data available.</div>
 </template>

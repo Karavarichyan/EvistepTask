@@ -9,7 +9,7 @@ const router = createRouter({
       component: () => import('@/layouts/LayoutView.vue'),
       children: [
         {
-          path: "", // route: /
+          path: "", 
           component: () => import('@/views/login/NewEmailView.vue'),
         },
         
@@ -20,15 +20,15 @@ const router = createRouter({
       component: () => import('@/layouts/LayoutDashView.vue'),
       children: [
         {
-          path: "info", // route: /
+          path: "info", 
           component: () => import('@/views/login/InfoUserViuw.vue'),
         },
         {
-            path: "infoPost", // route: /
+            path: "infoPost", 
             component: () => import('@/views/dashboard/PostUserView.vue'),
           },
           {
-            path: "intiresting", // route: /
+            path: "intiresting", 
             component: () => import('@/views/dashboard/intrestingInfo.vue'),
           },
         

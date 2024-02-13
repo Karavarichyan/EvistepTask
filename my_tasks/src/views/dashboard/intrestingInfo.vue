@@ -1,7 +1,7 @@
 <template>
 
     
-    <div class="   ml-16 mt-16  container mx-auto my-8">
+    <div class="   ml-8 mt-8  container mx-auto my-8">
       <!-- <header class="text-center">
         <h1 class="text-4xl font-bold text-gray-800 mb-4">EVISTEP</h1>
         <h2 class="text-4xl font-bold text-gray-800 mb-4">About Us</h2>
@@ -12,7 +12,7 @@
           :selectedTab="selectedTab"
           @changeTab="changeTab"
         />
-      <section class="my-8">
+      <section class="w-full">
         <h2 class="text-2xl font-bold text-gray-800 mb-4">Who We Are</h2>
         <p class="text-gray-700">
           We are a fast-growing software and game development company that sets the highest standards for digital delivery across the globe.
