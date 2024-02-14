@@ -62,58 +62,33 @@
   </script>
   
 
-    const currentUser = JSON.parse(localStorage.getItem('userData'))
-    <template>
-        <div class="flex flex-col">
-          <div class="w-full sticky border-b border-gray-200 p-4 flex justify-between">
-            <MenuSectionVue
-              :names="tabs"
-              :selectedTab="selectedTab"
-              @changeTab="changeTab"
-            />
-          </div>
-          <div class="p-6">
-            <div class="my-6" v-if="selectedTab === 'All'">
-              <br>This is All users
-              <!-- Выводите посты для вкладки "All" -->
-              <div v-for="post in posts" :key="post.id">
-                {{ post.title }}
-              </div>
-            </div>
-            <div class="my-6" v-if="selectedTab === 'Only'">
-              <br>This is information for Only users
-              <!-- Выводите посты для вкладки "Only" -->
-              <div v-for="post in posts" :key="post.id">
-                {{ post.title }}
-              </div>
-            </div>
-          </div>
-        </div>
-      </template>
+  <script setup>
+  import { ref, computed } from 'vue'; 
+  import axios from 'axios'; 
+  const currentUser = JSON.parse(localStorage.getItem('userData'))
+  const selectedTab = ref('');
+  const posts = ref([]);
+  
+  const changeTab = async (tabName) => {
+    selectedTab.value = tabName; 
+  }
+  
+  const fetchPosts = async () => {
+    try {
+      const currentUser = JSON.parse(localStorage.getItem('userData')); 
+      const response = await axios.get(
+        selectedTab.value === 'All'
+          ? 'https://jsonplaceholder.typicode.com/posts'
+          : https://jsonplaceholder.typicode.com/posts/?userId=${currentUser.id}
+      );
+      posts.value = response.data; 
+    } catch (error) {
       
-      <script setup>
-      // ... (ваш существующий код)
-      
-      const fetchPosts = async () => {
-        console.log('Fetching posts for tab:', selectedTab.value);
-        try {
-          const currentUser = /* замените этот код на вашу логику получения текущего пользователя */;
-          const response = await axios.get(
-            selectedTab.value === 'All'
-              ? 'https://jsonplaceholder.typicode.com/posts'
-              : `https://jsonplaceholder.typicode.com/posts/?userId=${currentUser.id}`
-          );
-          console.log('Full response:', response);
-          console.log('Response data:', response.data);
-          posts.value = response.data;
-        } catch (error) {
-          console.error('Ошибка при получении постов:', error);
-        }
-      };
-      
-      onMounted(() => {
-        // Fetch initial posts when the component is mounted
-        fetchPosts();
-      });
-      </script>
-      
+    }
+  };
+  
+  const computedPosts = computed(() => {
+    fetchPosts(); 
+    return posts.value; 
+  });
+  </script>
