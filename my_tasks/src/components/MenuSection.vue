@@ -5,7 +5,7 @@
         <button
           v-for="tab in names"
           :key="tab.name"
-          :class="['px-4 py-2 cursor-pointer', {'bg-blue-500 text-white': tab.name === selectedTab}]"
+          :class="['px-4 py-2 cursor-pointer', {'border-b-4 border-black  text-black': tab.name === selectedTab}]"
           @click="clickOnTab(tab.name)"
         >{{tab.label}}</button>
       </div>
@@ -14,7 +14,6 @@
       </div>
     </div>
   </template>
-  
   <script setup>
   const props = defineProps({
     names: {
