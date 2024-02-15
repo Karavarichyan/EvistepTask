@@ -1,17 +1,17 @@
 <template>
-
-    
-    <div class="   ml-8 mt-8  container mx-auto my-8">
-      <!-- <header class="text-center">
-        <h1 class="text-4xl font-bold text-gray-800 mb-4">EVISTEP</h1>
-        <h2 class="text-4xl font-bold text-gray-800 mb-4">About Us</h2>
-        <p class="text-lg text-gray-600">CHOOSE THE RIGHT DEVELOPMENT PATH WITH EVISTEP</p>
-      </header> -->
-      <MenuSectionVue
+<MenuSectionVue
           :names="tabs"
           :selectedTab="selectedTab"
           @changeTab="changeTab"
         />
+    
+    <div class="   ml-8 mt-8  container mx-auto my-8">
+      <header class="text-center">
+        <h1 class="text-4xl font-bold text-gray-800 mb-4">EVISTEP</h1>
+        <h2 class="text-4xl font-bold text-gray-800 mb-4">About Us</h2>
+        <p class="text-lg text-gray-600">CHOOSE THE RIGHT DEVELOPMENT PATH WITH EVISTEP</p>
+      </header>
+      
       <section class="w-full">
         <h2 class="text-2xl font-bold text-gray-800 mb-4">Who We Are</h2>
         <p class="text-gray-700">
@@ -21,7 +21,7 @@
         </p>
       </section>
   
-      <!-- <section class="my-8">
+      <section class="my-8">
         <h2 class="text-2xl font-bold text-gray-800 mb-4">Our Mission</h2>
         <p class="text-gray-700">
           Evistep is committed to maintaining the highest standards in creating digital solutions and assisting our clients in achieving success with their most challenging projects.
@@ -31,7 +31,7 @@
   
       <footer class="text-center my-8">
         <p class="text-gray-600">Get in touch with us. Let us advance your business with digital now!</p>
-      </footer> -->
+      </footer>
     </div>
   </template>
   <script setup>
