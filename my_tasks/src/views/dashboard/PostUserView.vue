@@ -1,4 +1,57 @@
 <template>
+  <div>
+    <MenuSectionVue
+      :names="tabs"
+      :selectedTab="selectedTab"
+      @changeTab="changeTab"
+    />
+    <UserPosts
+      :selectedTab="selectedTab"
+      :posts="posts"
+      :currentUser="currentUser"
+    />
+
+    <UserPosts :selectedTab="selectedTab" :posts="posts" />
+  </div>
+</template>
+
+<script setup>
+import MenuSectionVue from "@/components/MenuSection.vue";
+import UserPosts from "@/components/UserPosts.vue";
+import axios from "axios";
+import { ref } from "vue";
+
+const tabs = [
+  { name: "All", label: "All Users" },
+  { name: "Only", label: "Only" },
+];
+
+const selectedTab = ref("All");
+const currentUser = JSON.parse(localStorage.getItem("userData"));
+const posts = ref([]);
+
+const fetchPosts = async () => {
+  try {
+    const response = await axios.get(
+      selectedTab.value === "All"
+        ? "https://jsonplaceholder.typicode.com/posts"
+        : `https://jsonplaceholder.typicode.com/posts?userId=${currentUser.id}`
+    );
+    posts.value = response.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const changeTab = async (tabName) => {
+  selectedTab.value = tabName;
+  await fetchPosts();
+};
+
+fetchPosts();
+</script>
+
+<!-- <template>
   <div class="flex flex-col">
     <div
       class="w-full sticky border-b border-gray-200 p-4 flex justify-between">
@@ -11,7 +64,7 @@
 import { ref } from 'vue';
 import PostsView from '@/components/PostsView.vue';
 const newTab = ref('Only');
-</script>
+</script> -->
 
 <!-- <template>
         <div class="flex flex-col">

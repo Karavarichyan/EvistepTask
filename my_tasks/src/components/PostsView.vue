@@ -31,7 +31,7 @@
   
   <script setup>
   import { ref, computed } from 'vue'
-  import MenuSectionVue from '@/components/MenuSection.vue'
+  // import MenuSectionVue from '@/components/MenuSection.vue'
   import axios from 'axios'
   const tabs = [
     { name: 'All', label: 'All Users' },
