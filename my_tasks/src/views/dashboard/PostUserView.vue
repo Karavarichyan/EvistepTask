@@ -29,14 +29,25 @@ const tabs = [
 const selectedTab = ref("All");
 const currentUser = JSON.parse(localStorage.getItem("userData"));
 const posts = ref([]);
+function sleep(sec) {
+  return new Promise((resolve) => setTimeout(resolve, sec));
+}
+async function example() {
+  await sleep(9000);
+  console.log("9 seconds");
+}
+// zdelat loding  na odnu secundu minum
 
 const fetchPosts = async () => {
+  example();
   try {
+    // await new Promise(resolve => setTimeout(resolve, 10000));
     const response = await axios.get(
       selectedTab.value === "All"
         ? "https://jsonplaceholder.typicode.com/posts"
         : `https://jsonplaceholder.typicode.com/posts?userId=${currentUser.id}`
     );
+    console.log(response);
     posts.value = response.data;
   } catch (error) {
     console.error(error);
