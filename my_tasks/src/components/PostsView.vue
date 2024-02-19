@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <div class="flex flex-col">
       <div class="w-full sticky border-b border-gray-200 p-4 flex justify-between">
         <MenuSectionVue
@@ -64,4 +64,4 @@
   }
   MyPosts();
   </script>
-  
+   -->
