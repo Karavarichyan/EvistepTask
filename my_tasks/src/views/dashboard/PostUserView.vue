@@ -4,11 +4,7 @@
       :names="tabs"
       :selectedTab="selectedTab"
       @changeTab="changeTab" />
-    <!-- <h1 class="text-4xl font-bold mb-8 text-center text-gray-800">{{ pageTitle }}</h1> -->
-    <UserPosts
-      :selectedTab="selectedTab"
-      :sourse="sourse"
-      :test="pageTitle" />
+    <UserPosts :selectedTab="selectedTab" :sourse="sourse" :test="pageTitle" />
   </div>
 </template>
 
@@ -18,39 +14,43 @@ import UserPosts from '@/components/UserPosts.vue';
 import axios from 'axios';
 import { ref } from 'vue';
 
+const keyFromBC = 2;
+
 const tabs = [
-  { name: 'All', label: 'All Users' },
-  { name: 'Only', label: 'Only' },
+  { name: 'Alasfasfl', label: 'All asdUsers', key: 1 },
+  { name: 'All', label: 'All Users', key: 2 },
+  { name: 'Only', label: 'Only', key: 3 },
 ];
-const selectedTab = ref('All');
+
+let i = 'All';
+let x = 'Only';
+let z = '';
+for (const item of tabs) {
+  if (item.key === keyFromBC) {
+    // console.log(item.name);
+    z = item.name;
+  }
+}
+console.log(z);
+// console.log(i);
+// console.log(x);
+
+const selectedTab = ref(z);
+
 const currentUser = JSON.parse(localStorage.getItem('userData'));
 const sourse = ref([]);
 const pageTitle = ref(currentUser.name);
 
-// const pageTitle = ref('allll');
-// function sleep(sec) {
-//   return new Promise((resolve) => setTimeout(resolve, sec));
-// }
-// :currentUser="currentUser"
-// async function mytest() {
-//   await sleep(9000);
-//   console.log('9 seconds');
-// }
-
 const fetchPosts = async () => {
-  //   mytest();
   try {
-    // await new Promise(resolve => setTimeout(resolve, 5000));
     const response = await axios.get(
       selectedTab.value === 'All'
         ? 'https://jsonplaceholder.typicode.com/posts'
         : `https://jsonplaceholder.typicode.com/posts?userId=${currentUser.id}`
     );
-    // console.log(response);
+    console.log(response);
     sourse.value = response.data;
-  } catch (error) {
-    // console.error(error);
-  }
+  } catch (error) {}
 };
 
 const changeTab = async (tabName) => {
