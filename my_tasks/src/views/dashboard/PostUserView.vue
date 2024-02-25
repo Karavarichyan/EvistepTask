@@ -19,29 +19,34 @@
 import MenuSectionVue from "@/components/MenuSection.vue";
 import UserPosts from "@/components/UserPosts.vue";
 import axios from "axios";
-import { ref } from "vue";
+import { ref,computed } from "vue";
+const keyFromBC = 2;
 
 const tabs = [
-  { name: "All", label: "All Users" },
-  { name: "Only", label: "Only" },
+  { name: "Alasfasfl", label: "All asdUsers", key: 1 },
+  { name: "All", label: "All Users", key: 2 },
+  { name: "Only", label: "Only", key: 3 },
 ];
 
-const selectedTab = ref("All");
+const selectedTab = ref("");
+// for (const item of tabs) {
+//       if (item.key === keyFromBC) {
+//         selectedTab.value = item.name;
+//         break;
+//       }}
+
+const selectedTabName = computed(() => {
+  const tab = tabs.find((tab) => tab.key === keyFromBC);
+  return tab ? tab.name : "";
+});
+
+selectedTab.value = selectedTabName.value;
+
 const currentUser = JSON.parse(localStorage.getItem("userData"));
 const posts = ref([]);
-function sleep(sec) {
-  return new Promise((resolve) => setTimeout(resolve, sec));
-}
-async function example() {
-  await sleep(9000);
-  console.log("9 seconds");
-}
-// zdelat loding  na odnu secundu minum
 
 const fetchPosts = async () => {
-  example();
   try {
-    // await new Promise(resolve => setTimeout(resolve, 10000));
     const response = await axios.get(
       selectedTab.value === "All"
         ? "https://jsonplaceholder.typicode.com/posts"
