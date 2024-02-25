@@ -3,7 +3,11 @@
           :names="tabs"
           :selectedTab="selectedTab"
           @changeTab="changeTab"
+
         />
+     <div v-if="selectedTab === 'caxik'">
+      <p>barev dzez  caxik.</p>
+    </div>
     
     <div class="   ml-8 mt-8  container mx-auto my-8">
       <header class="text-center">
@@ -38,11 +42,11 @@
   import { ref } from 'vue'
 import MenuSectionVue from '@/components/MenuSection.vue'
 const tabs = [
-    { name: 'barev', label: ' caxik' },
-    { name: 'haox', label: ' shnik' },
-    { name: 'hiii', label: ' alo' }
+    { name: 'caxik', label: ' caxik' },
+    { name: 'shnik', label: ' shnik' },
+    { name: 'alo', label: ' alo' }
   ]
-  const selectedTab = ref('barev')
+  const selectedTab = ref('caxik')
   
   const changeTab = (tabName) => {
     selectedTab.value = tabName
